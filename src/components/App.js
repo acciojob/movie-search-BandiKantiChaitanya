@@ -28,19 +28,18 @@ const App = () => {
   return (
     <div>
         Search Movie
-        <div>
+        <form onSubmit={(e)=>{e.preventDefault();handleSearch(input)}}  >
         <input type="text" name="" id="" value={input} onChange={(e)=>{setInput(e.target.value)}} />
-        <button onClick={()=>{handleSearch(input)}} >Search</button>
-        <p>{error}</p>
-        
-        </div>
+        <button >Search</button>
+        </form>
+        {error && <p className="error">{error}</p>}
         <ul>
           {
             movies.map((movie)=>(
-              <div key={movie.imdbID} >
-                <li><h1>{movie.Title}</h1></li>
+              <li key={movie.imdbID} >
+                <h1>{movie.Title}</h1>
                 <img src={movie.Poster} alt={movie.Title} />
-              </div>
+              </li>
               
             ))
           }
